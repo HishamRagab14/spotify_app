@@ -9,6 +9,7 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.lightBackground,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+          elevation: 0,
           backgroundColor: AppColors.primaryColor,
           textStyle: TextStyle(
             fontSize: 20,
@@ -26,6 +27,7 @@ class AppTheme {
     scaffoldBackgroundColor: AppColors.darkBackground,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ElevatedButton.styleFrom(
+          elevation: 0,
           backgroundColor: AppColors.primaryColor,
           textStyle: TextStyle(
             fontSize: 20,
