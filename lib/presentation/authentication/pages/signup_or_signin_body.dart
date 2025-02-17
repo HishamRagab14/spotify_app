@@ -4,6 +4,7 @@ import 'package:spotify_app/common/widgets/basic_app_bar.dart';
 import 'package:spotify_app/common/widgets/buttons/basic_app_button.dart';
 import 'package:spotify_app/core/configs/theme/app_colors.dart';
 import 'package:spotify_app/core/utils/assets.dart';
+import 'package:spotify_app/presentation/authentication/signup/sign_up.dart';
 
 class SignupOrSigninBody extends StatelessWidget {
   const SignupOrSigninBody({super.key});
@@ -65,7 +66,14 @@ class SignupOrSigninBody extends StatelessWidget {
                       flex: 1,
                       child: BasicAppButton(
                         text: 'Register',
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignupPage(),
+                            ),
+                          );
+                        },
                       ),
                     ),
                     SizedBox(
