@@ -8,15 +8,20 @@ class GetStarted extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Intros(
-        buttonText: 'Get started',
-        backgroundImage: Assets.imagesAriana,
-        title: 'Enjoy listening to music',
-        subtitle: Text(
-          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis enim purus sed phasellus. Cursus ornare id scelerisque aliquam.',
-          textAlign: TextAlign.center,
-          style: TextStyle(color: Color(0xFF797979)),
-        ),
+      body: Column(
+        children: [
+          Intros(
+            buttonText: 'Get started',
+            backgroundImage: Assets.imagesAriana,
+            title: 'Enjoy listening to music',
+            subtitle: Text(
+              'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sagittis enim purus sed phasellus. Cursus ornare id scelerisque aliquam.',
+              textAlign: TextAlign.center,
+              style: TextStyle(color: Color(0xFF797979)),
+            ),
+            
+          ),
+        ],
       ),
     );
   }
