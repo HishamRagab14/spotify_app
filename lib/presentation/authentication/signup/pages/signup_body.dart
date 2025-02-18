@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify_app/common/widgets/buttons/basic_app_button.dart';
+import 'package:spotify_app/common/widgets/social_icons_row.dart';
 import 'package:spotify_app/core/configs/theme/app_colors.dart';
-import 'package:spotify_app/core/utils/assets.dart';
+import 'package:spotify_app/presentation/authentication/signin/sign_in.dart';
 import 'package:spotify_app/presentation/authentication/signup/pages/or_divider.dart';
 
 class SignupBody extends StatelessWidget {
@@ -37,27 +37,11 @@ class SignupBody extends StatelessWidget {
               SizedBox(height: 30),
               OrDivider(),
               SizedBox(height: 20),
-              Row(
-                crossAxisAlignment: CrossAxisAlignment.end,
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 30),
-                    child: GestureDetector(
-                        child: SvgPicture.asset(Assets.imagesGoogleicon)),
-                  ),
-                  GestureDetector(
-                    child: SvgPicture.asset(
-                      Assets.imagesAppleicon,
-                      height: 34,
-                    ),
-                  ),
-                ],
-              ),
+              SocialIconsRow(),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
               ),
-              _signInText(),
+              _signInText(context),
             ],
           ),
         ),
@@ -69,7 +53,7 @@ class SignupBody extends StatelessWidget {
     return Text(
       'Register',
       style: TextStyle(
-        fontSize: 25,
+        fontSize: 30,
         fontWeight: FontWeight.bold,
       ),
       textAlign: TextAlign.center,
@@ -125,7 +109,7 @@ class SignupBody extends StatelessWidget {
     );
   }
 
-  Widget _signInText() {
+  Widget _signInText( BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -137,7 +121,9 @@ class SignupBody extends StatelessWidget {
           ),
         ),
         GestureDetector(
-          onTap: () {},
+          onTap: () {
+            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignInPage()));
+          },
           child: Text(
             'Sign in',
             style: TextStyle(
@@ -151,3 +137,5 @@ class SignupBody extends StatelessWidget {
     );
   }
 }
+
+

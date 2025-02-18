@@ -4,6 +4,7 @@ import 'package:spotify_app/common/widgets/basic_app_bar.dart';
 import 'package:spotify_app/common/widgets/buttons/basic_app_button.dart';
 import 'package:spotify_app/core/configs/theme/app_colors.dart';
 import 'package:spotify_app/core/utils/assets.dart';
+import 'package:spotify_app/presentation/authentication/signin/sign_in.dart';
 import 'package:spotify_app/presentation/authentication/signup/sign_up.dart';
 
 class SignupOrSigninBody extends StatelessWidget {
@@ -84,7 +85,14 @@ class SignupOrSigninBody extends StatelessWidget {
                       child: BasicAppButton(
                         backgroundColor: Color(0xff000000),
                         text: 'Sign in',
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.pushReplacement(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => SignInPage(),
+                            ),
+                          );
+                        },
                       ),
                     ),
                   ],
