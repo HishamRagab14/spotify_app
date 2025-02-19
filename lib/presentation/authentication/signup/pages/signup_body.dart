@@ -2,11 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:spotify_app/common/widgets/buttons/basic_app_button.dart';
 import 'package:spotify_app/common/widgets/social_icons_row.dart';
 import 'package:spotify_app/core/configs/theme/app_colors.dart';
+import 'package:spotify_app/data/models/auth/create_user_req.dart';
+import 'package:spotify_app/domain/use_cases/auth/signup_use_case.dart';
 import 'package:spotify_app/presentation/authentication/signin/sign_in.dart';
 import 'package:spotify_app/presentation/authentication/signup/pages/or_divider.dart';
+import 'package:spotify_app/service_locator.dart';
 
 class SignupBody extends StatelessWidget {
-  const SignupBody({super.key});
+  SignupBody({super.key});
+  final TextEditingController name = TextEditingController();
+  final TextEditingController password = TextEditingController();
+  final TextEditingController email = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -32,7 +38,28 @@ class SignupBody extends StatelessWidget {
               SizedBox(height: 30),
               BasicAppButton(
                 text: 'Create Account',
-                onPressed: () {},
+                onPressed: () async {
+                  var result = await serviceLocator<SignupUseCase>().call(
+                    params: CreateUserReq(
+                      email: email.text.toString(),
+                      password: password.text.toString(),
+                      name: name.text.toString(),
+                    ),
+                  );
+                  result.fold(
+                    (l) {
+                      var snackBar = SnackBar(content: Text(l));
+                      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+                    },
+                    (r) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text('Account created successfully'),
+                        ),
+                      );
+                    },
+                  );
+                },
               ),
               SizedBox(height: 30),
               OrDivider(),
@@ -62,6 +89,7 @@ class SignupBody extends StatelessWidget {
 
   Widget _fullNameField(BuildContext context) {
     return TextField(
+      controller: name,
       decoration: InputDecoration(
         labelText: 'Full Name',
       ).applyDefaults(
@@ -72,6 +100,7 @@ class SignupBody extends StatelessWidget {
 
   Widget _emailField(BuildContext context) {
     return TextField(
+      controller: email,
       decoration: InputDecoration(
         labelText: 'Email Address',
       ).applyDefaults(
@@ -82,6 +111,7 @@ class SignupBody extends StatelessWidget {
 
   Widget _passwordField(BuildContext context) {
     return TextField(
+      controller: password,
       obscureText: true,
       decoration: InputDecoration(
         labelText: 'Password',
@@ -109,7 +139,7 @@ class SignupBody extends StatelessWidget {
     );
   }
 
-  Widget _signInText( BuildContext context) {
+  Widget _signInText(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -122,7 +152,8 @@ class SignupBody extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => SignInPage()));
+            Navigator.pushReplacement(
+                context, MaterialPageRoute(builder: (context) => SignInPage()));
           },
           child: Text(
             'Sign in',
@@ -137,5 +168,3 @@ class SignupBody extends StatelessWidget {
     );
   }
 }
-
-

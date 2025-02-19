@@ -1,9 +1,8 @@
 import 'package:dartz/dartz.dart';
-import 'package:spotify_app/core/errors/failures.dart';
-import 'package:spotify_app/domain/entities/auth/user_entity.dart';
+import 'package:spotify_app/data/models/auth/create_user_req.dart';
 
 abstract class AuthRepo {
-  Future<Either<Failure,UserEntity>> signin(String email, String password);
-  Future<Either<Failure,UserEntity>> signup(String email, String password);
+  Future<Either> signin(CreateUserReq req);
+  Future<Either> signup(CreateUserReq req);
   // Future<void> logout();
 }
