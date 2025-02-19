@@ -7,7 +7,7 @@ import 'package:spotify_app/service_locator.dart';
 
 class AuthRepoImpl extends AuthRepo {
   @override
-  Future<Either> signin(SignInUserReq req) async {
+  Future<Either> signinWithEmailAndPassword(SignInUserReq req) async {
     return await serviceLocator<FirebaseAuthService>().signin(req);
   }
 
@@ -15,4 +15,11 @@ class AuthRepoImpl extends AuthRepo {
   Future<Either> signup(CreateUserReq req) async {
     return await serviceLocator<FirebaseAuthService>().signup(req);
   }
+  
+  @override
+  Future<Either> signinWithGoogle() async{
+    return await serviceLocator<FirebaseAuthService>().signinWithGoogle();
+  }
+  
+  
 }
