@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
@@ -31,8 +32,14 @@ class FirebaseAuthServiceImpl implements FirebaseAuthService {
   @override
   Future<Either> signup(CreateUserReq req) async {
     try {
-      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+      var data = await FirebaseAuth.instance.createUserWithEmailAndPassword(
           email: req.email, password: req.password);
+      FirebaseFirestore.instance.collection('Users').add(
+        {
+          'name': req.name,
+          'email': data.user?.email,
+        },
+      );
       return Right(null);
     } on FirebaseAuthException catch (e) {
       String message = '';
