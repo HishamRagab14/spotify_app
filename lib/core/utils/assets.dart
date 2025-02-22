@@ -30,6 +30,10 @@ class Assets {
   /// assets/images/billie.png
   static const String imagesBillie = "assets/images/billie.png";
 
+  /// Assets for imagesBilliehomepng
+  /// assets/images/billiehomepng.png
+  static const String imagesBilliehomepng = "assets/images/billiehomepng.png";
+
   /// Assets for imagesDualipabg
   /// assets/images/dualipabg.svg
   static const String imagesDualipabg = "assets/images/dualipabg.svg";
