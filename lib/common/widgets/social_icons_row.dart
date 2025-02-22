@@ -3,7 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:spotify_app/common/helpers/is_dark_mode.dart';
 import 'package:spotify_app/core/utils/assets.dart';
 import 'package:spotify_app/domain/use_cases/auth/signin_with_google_use_case.dart';
-import 'package:spotify_app/presentation/root/pages/root.dart';
+import 'package:spotify_app/presentation/home/pages/home_page.dart';
 import 'package:spotify_app/service_locator.dart';
 
 class SocialIconsRow extends StatelessWidget {
@@ -31,7 +31,7 @@ class SocialIconsRow extends StatelessWidget {
                 (r) {
                   Navigator.pushAndRemoveUntil(
                     context,
-                    MaterialPageRoute(builder: (context) => RootPage()),
+                    MaterialPageRoute(builder: (context) => HomePage()),
                     (route) => false,
                   );
                 },

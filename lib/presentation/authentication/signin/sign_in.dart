@@ -16,6 +16,7 @@ class SignInPage extends StatelessWidget {
           height: 35,
           width: 35,
         ),
+        hideBackButton: false,
       ),
       body: SigninBody(),
     );
