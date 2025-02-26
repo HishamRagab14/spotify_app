@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:spotify_app/common/helpers/is_dark_mode.dart';
 import 'package:spotify_app/core/configs/constants/app_images_url.dart';
-import 'package:spotify_app/core/configs/theme/app_colors.dart';
 import 'package:spotify_app/domain/entities/songs/song_entity.dart';
+import 'package:spotify_app/presentation/home/pages/views/play_icon.dart';
 
 class NewSongListViewItem extends StatelessWidget {
   const NewSongListViewItem({
@@ -36,20 +35,7 @@ class NewSongListViewItem extends StatelessWidget {
                   ),
                   child: Align(
                     alignment: Alignment.bottomRight,
-                    child: Container(
-                      height: 40,
-                      width: 40,
-                      transform: Matrix4.translationValues(-6, 10, 0),
-                      decoration: BoxDecoration(
-                          shape: BoxShape.circle,
-                          color: context.isDarkMode
-                              ? AppColors.darkGrey
-                              : Color(0xFFE6E6E6)),
-                      child: Icon(
-                        Icons.play_arrow_rounded,
-                        color:context.isDarkMode? Color(0xFF959595) : Color(0xFF555555),
-                      ),
-                    ),
+                    child: PlayIcon(),
                   ),
                 ),
               ),

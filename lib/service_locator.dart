@@ -9,6 +9,7 @@ import 'package:spotify_app/domain/use_cases/auth/signin_use_case.dart';
 import 'package:spotify_app/domain/use_cases/auth/signin_with_google_use_case.dart';
 import 'package:spotify_app/domain/use_cases/auth/signup_use_case.dart';
 import 'package:spotify_app/domain/use_cases/songs/get_news_songs_use_case.dart';
+import 'package:spotify_app/domain/use_cases/songs/getl_all_songs_playlist_use_case.dart';
 
 final serviceLocator = GetIt.instance;
 Future<void> initializeDependencies() async {
@@ -35,5 +36,8 @@ Future<void> initializeDependencies() async {
   );
   serviceLocator.registerSingleton<GetNewsSongsUseCase>(
     GetNewsSongsUseCase(),
+  );
+  serviceLocator.registerSingleton<GetlAllSongsPlaylistUseCase>(
+    GetlAllSongsPlaylistUseCase(),
   );
 }

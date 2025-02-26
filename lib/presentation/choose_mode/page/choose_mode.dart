@@ -6,6 +6,7 @@ import 'package:spotify_app/core/utils/assets.dart';
 import 'package:spotify_app/presentation/authentication/signup_or_signin.dart';
 import 'package:spotify_app/presentation/choose_mode/bloc/theme_cubit/theme_cubit.dart';
 import 'package:spotify_app/presentation/choose_mode/page/widgets/theme_icon.dart';
+import 'package:spotify_app/presentation/home/pages/home_page.dart';
 import 'package:spotify_app/presentation/intro/pages/intro.dart';
 
 class ChooseMode extends StatelessWidget {
@@ -55,7 +56,8 @@ class ChooseMode extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => const SignupOrSignin(),
+                  // builder: (context) => const SignupOrSignin(),
+                  builder: (context) => const HomePage(),
                 ),
               );
             },
